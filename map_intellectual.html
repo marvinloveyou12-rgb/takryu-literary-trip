@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_fc09445f4e90a6f2dd84bc011513aa51 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_fc09445f4e90a6f2dd84bc011513aa51" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_fc09445f4e90a6f2dd84bc011513aa51 = L.map(
+                "map_fc09445f4e90a6f2dd84bc011513aa51",
+                {
+                    center: [35.991, 126.71195],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 15,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_b56a1c166fbf1716b61e1a693a9f75e0 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_b56a1c166fbf1716b61e1a693a9f75e0.addTo(map_fc09445f4e90a6f2dd84bc011513aa51);
+        
+    
+            var marker_8908afd70a94b2f02270cfb04704e0e8 = L.marker(
+                [35.9916, 126.7123],
+                {
+}
+            ).addTo(map_fc09445f4e90a6f2dd84bc011513aa51);
+        
+    
+            var icon_364b0939c84109ddde113da237a729ef = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "darkblue",
+  "iconColor": "white",
+  "icon": "ship",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_e1ebe19ce97af1fd7432f440258d9987 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_089e1c397d06c9bc4f93f962407e3828 = $(`<div id="html_089e1c397d06c9bc4f93f962407e3828" style="width: 100.0%; height: 100.0%;">         <div style="width:220px; text-align:center; font-family:'sans-serif';">             <h4 style="margin:5px 0; color:#333;">1. 금강 & 군산항</h4>             <hr style="margin:5px 0; border:0; border-top:1px solid #eee;">             <a href="https://map.naver.com/v5/search/%EC%A7%84%ED%8F%AC%ED%95%B4%EC%96%91%ED%85%8C%EB%A7%88%EA%B3%B5%EC%9B%90" target="_blank"                 style="display:inline-block; width:100%; padding:8px 0;                        background:#03C75A; color:white; text-decoration:none;                        border-radius:5px; font-size:13px; font-weight:bold; margin-top:5px;">                NAVER 지도/사진 보기 🔗             </a>         </div>         </div>`)[0];
+                popup_e1ebe19ce97af1fd7432f440258d9987.setContent(html_089e1c397d06c9bc4f93f962407e3828);
+            
+        
+
+        marker_8908afd70a94b2f02270cfb04704e0e8.bindPopup(popup_e1ebe19ce97af1fd7432f440258d9987)
+        ;
+
+        
+    
+    
+            marker_8908afd70a94b2f02270cfb04704e0e8.bindTooltip(
+                `<div>
+                     1. 금강 & 군산항
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_8908afd70a94b2f02270cfb04704e0e8.setIcon(icon_364b0939c84109ddde113da237a729ef);
+            
+    
+            var marker_2a05b2ddf0010a24bfe196a28d6c018a = L.marker(
+                [35.9907, 126.7118],
+                {
+}
+            ).addTo(map_fc09445f4e90a6f2dd84bc011513aa51);
+        
+    
+            var icon_3e8a1d3fdeb95ed885807ed75fd83bce = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "darkblue",
+  "iconColor": "white",
+  "icon": "university",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_30741a5764be65f0e4bb97bc8cca4b31 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_b49c05f2af23f52f01103f872a5ac0b4 = $(`<div id="html_b49c05f2af23f52f01103f872a5ac0b4" style="width: 100.0%; height: 100.0%;">         <div style="width:220px; text-align:center; font-family:'sans-serif';">             <h4 style="margin:5px 0; color:#333;">2. 구 조선은행</h4>             <hr style="margin:5px 0; border:0; border-top:1px solid #eee;">             <a href="https://map.naver.com/v5/search/%EA%B5%B0%EC%82%B0%20%EA%B7%BC%EB%8C%80%EA%B1%B4%EC%B6%95%EA%B4%80" target="_blank"                 style="display:inline-block; width:100%; padding:8px 0;                        background:#03C75A; color:white; text-decoration:none;                        border-radius:5px; font-size:13px; font-weight:bold; margin-top:5px;">                NAVER 지도/사진 보기 🔗             </a>         </div>         </div>`)[0];
+                popup_30741a5764be65f0e4bb97bc8cca4b31.setContent(html_b49c05f2af23f52f01103f872a5ac0b4);
+            
+        
+
+        marker_2a05b2ddf0010a24bfe196a28d6c018a.bindPopup(popup_30741a5764be65f0e4bb97bc8cca4b31)
+        ;
+
+        
+    
+    
+            marker_2a05b2ddf0010a24bfe196a28d6c018a.bindTooltip(
+                `<div>
+                     2. 구 조선은행
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_2a05b2ddf0010a24bfe196a28d6c018a.setIcon(icon_3e8a1d3fdeb95ed885807ed75fd83bce);
+            
+    
+            var marker_ae65e7818daef72970a4de9c08fb7e5b = L.marker(
+                [35.9907, 126.7125],
+                {
+}
+            ).addTo(map_fc09445f4e90a6f2dd84bc011513aa51);
+        
+    
+            var icon_db0eb7f563f7cb50f239642449927d73 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "darkblue",
+  "iconColor": "white",
+  "icon": "image",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_6662ab22eaff942aa4626570a4b03418 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_dab0155f4f0dc59b062e7b84a6361659 = $(`<div id="html_dab0155f4f0dc59b062e7b84a6361659" style="width: 100.0%; height: 100.0%;">         <div style="width:220px; text-align:center; font-family:'sans-serif';">             <h4 style="margin:5px 0; color:#333;">3. 구 일본18은행</h4>             <hr style="margin:5px 0; border:0; border-top:1px solid #eee;">             <a href="https://map.naver.com/v5/search/%EA%B5%B0%EC%82%B0%20%EA%B7%BC%EB%8C%80%EB%AF%B8%EC%88%A0%EA%B4%80" target="_blank"                 style="display:inline-block; width:100%; padding:8px 0;                        background:#03C75A; color:white; text-decoration:none;                        border-radius:5px; font-size:13px; font-weight:bold; margin-top:5px;">                NAVER 지도/사진 보기 🔗             </a>         </div>         </div>`)[0];
+                popup_6662ab22eaff942aa4626570a4b03418.setContent(html_dab0155f4f0dc59b062e7b84a6361659);
+            
+        
+
+        marker_ae65e7818daef72970a4de9c08fb7e5b.bindPopup(popup_6662ab22eaff942aa4626570a4b03418)
+        ;
+
+        
+    
+    
+            marker_ae65e7818daef72970a4de9c08fb7e5b.bindTooltip(
+                `<div>
+                     3. 구 일본18은행
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_ae65e7818daef72970a4de9c08fb7e5b.setIcon(icon_db0eb7f563f7cb50f239642449927d73);
+            
+    
+            var marker_666203a0411f1814251f9397ba4ab932 = L.marker(
+                [35.991, 126.7112],
+                {
+}
+            ).addTo(map_fc09445f4e90a6f2dd84bc011513aa51);
+        
+    
+            var icon_f91c674dae0211fe68ad9c48e65ed6ad = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "darkblue",
+  "iconColor": "white",
+  "icon": "money",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_e179d92999482e7570b4d4a5dd70e63c = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_2ea9e1da079270e12ba91dc5ed25f173 = $(`<div id="html_2ea9e1da079270e12ba91dc5ed25f173" style="width: 100.0%; height: 100.0%;">         <div style="width:220px; text-align:center; font-family:'sans-serif';">             <h4 style="margin:5px 0; color:#333;">4. 미두장 터</h4>             <hr style="margin:5px 0; border:0; border-top:1px solid #eee;">             <a href="https://map.naver.com/v5/search/%EA%B5%B0%EC%82%B0%20%EA%B7%BC%EB%8C%80%EC%97%AD%EC%82%AC%EB%B0%95%EB%AC%BC%EA%B4%80" target="_blank"                 style="display:inline-block; width:100%; padding:8px 0;                        background:#03C75A; color:white; text-decoration:none;                        border-radius:5px; font-size:13px; font-weight:bold; margin-top:5px;">                NAVER 지도/사진 보기 🔗             </a>         </div>         </div>`)[0];
+                popup_e179d92999482e7570b4d4a5dd70e63c.setContent(html_2ea9e1da079270e12ba91dc5ed25f173);
+            
+        
+
+        marker_666203a0411f1814251f9397ba4ab932.bindPopup(popup_e179d92999482e7570b4d4a5dd70e63c)
+        ;
+
+        
+    
+    
+            marker_666203a0411f1814251f9397ba4ab932.bindTooltip(
+                `<div>
+                     4. 미두장 터
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_666203a0411f1814251f9397ba4ab932.setIcon(icon_f91c674dae0211fe68ad9c48e65ed6ad);
+            
+    
+            var poly_line_cbea24d0d7d4da64bed78eb53b08e2c4 = L.polyline(
+                [[35.9916, 126.7123], [35.9907, 126.7118], [35.9907, 126.7125], [35.991, 126.7112]],
+                {"bubblingMouseEvents": true, "color": "#27ae60", "dashArray": "10, 10", "dashOffset": null, "fill": false, "fillColor": "#27ae60", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 5}
+            ).addTo(map_fc09445f4e90a6f2dd84bc011513aa51);
+        
+    
+            var marker_3ffbcf7f574b12b19ee74a5fee22a85b = L.marker(
+                [35.99115, 126.71205],
+                {
+}
+            ).addTo(map_fc09445f4e90a6f2dd84bc011513aa51);
+        
+    
+            var div_icon_0be158c89fb281909dcd473846ab6a90 = L.divIcon({
+  "html": "\u003cdiv style=\"background:white; border:1px solid #666; border-radius:5px; font-size:10px; font-weight:bold; text-align:center; box-shadow:1px 1px 2px rgba(0,0,0,0.2);\"\u003e\ud83d\udeb62\ubd84\u003c/div\u003e",
+  "iconSize": [80, 20],
+  "iconAnchor": [40, 10],
+  "className": "empty",
+});
+        
+    
+                marker_3ffbcf7f574b12b19ee74a5fee22a85b.setIcon(div_icon_0be158c89fb281909dcd473846ab6a90);
+            
+    
+            var marker_a296ca0fb354dca74bcfe957a4c30454 = L.marker(
+                [35.9907, 126.71215000000001],
+                {
+}
+            ).addTo(map_fc09445f4e90a6f2dd84bc011513aa51);
+        
+    
+            var div_icon_317f4ef91c5190053ccba20f9a594fd8 = L.divIcon({
+  "html": "\u003cdiv style=\"background:white; border:1px solid #666; border-radius:5px; font-size:10px; font-weight:bold; text-align:center; box-shadow:1px 1px 2px rgba(0,0,0,0.2);\"\u003e\ud83d\udeb682m\u003c/div\u003e",
+  "iconSize": [80, 20],
+  "iconAnchor": [40, 10],
+  "className": "empty",
+});
+        
+    
+                marker_a296ca0fb354dca74bcfe957a4c30454.setIcon(div_icon_317f4ef91c5190053ccba20f9a594fd8);
+            
+    
+            var marker_77e7269e076bd63b5d0fc23569cd4e57 = L.marker(
+                [35.990849999999995, 126.71185],
+                {
+}
+            ).addTo(map_fc09445f4e90a6f2dd84bc011513aa51);
+        
+    
+            var div_icon_e3c46a99ec4adda454052bb43646fc28 = L.divIcon({
+  "html": "\u003cdiv style=\"background:white; border:1px solid #666; border-radius:5px; font-size:10px; font-weight:bold; text-align:center; box-shadow:1px 1px 2px rgba(0,0,0,0.2);\"\u003e\ud83d\udeb62\ubd84\u003c/div\u003e",
+  "iconSize": [80, 20],
+  "iconAnchor": [40, 10],
+  "className": "empty",
+});
+        
+    
+                marker_77e7269e076bd63b5d0fc23569cd4e57.setIcon(div_icon_e3c46a99ec4adda454052bb43646fc28);
+            
+</script>
+</html>

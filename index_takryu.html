@@ -1,0 +1,174 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>탁류 인터랙티브 문학기행</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
+    <style>
+        body { font-family: 'Pretendard', sans-serif; margin: 0; padding: 0; background: #f0f2f5; color: #333; }
+        #app { max-width: 500px; margin: 0 auto; background: white; min-height: 100vh; box-shadow: 0 0 20px rgba(0,0,0,0.1); display: flex; flex-direction: column; }
+
+        header { padding: 15px; text-align: center; border-bottom: 1px solid #eee; background: white; position: sticky; top: 0; z-index: 100; }
+        header h1 { margin: 0; font-size: 18px; color: #2c3e50; }
+
+        .page { flex: 1; padding: 20px; display: none; animation: fadeIn 0.4s; }
+        .page.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        .btn { width: 100%; padding: 15px; border: none; border-radius: 12px; font-size: 16px; font-weight: bold; cursor: pointer; transition: 0.2s; box-sizing: border-box; }
+        .btn-start { background: #ff6b6b; color: white; font-size: 20px; padding: 20px; box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4); }
+        .btn-start:hover { background: #fa5252; transform: translateY(-2px); }
+        .btn-back { background: #ecf0f1; color: #495057; margin-top: 20px; }
+
+        .landing-content { text-align: center; padding-top: 50px; }
+        .landing-emoji { font-size: 80px; margin-bottom: 20px; }
+        .landing-title { font-size: 28px; color: #2c3e50; margin-bottom: 15px; line-height: 1.4; }
+        .landing-sub { color: #e67e22; font-weight: 700; font-size: 15px; margin-bottom: 8px; }
+        .landing-desc { color: #868e96; margin-bottom: 50px; font-size: 16px; }
+
+        .book-container { text-align: center; margin-top: 20px; }
+        .cover-wrapper {
+            width: 200px; height: 300px; margin: 0 auto 20px; position: relative;
+            box-shadow: 5px 10px 15px rgba(0,0,0,0.1); border-radius: 5px; overflow: hidden;
+            cursor: pointer;
+        }
+        .cover-wrapper img { width: 100%; height: 100%; object-fit: cover; }
+
+        .interactive-layer {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(41, 128, 185, 0.9); color: white;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            opacity: 0; transition: opacity 0.3s; cursor: pointer;
+        }
+        .cover-wrapper:hover .interactive-layer { opacity: 1; }
+
+        .mini-map-frame { width: 100%; height: 250px; border: 1px solid #ddd; border-radius: 10px; margin-top: 20px; }
+
+        .quote-card { background: #fdfbf7; border-left: 4px solid #8e44ad; padding: 15px; margin-bottom: 15px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .quote-title { font-weight: bold; font-size: 14px; margin-bottom: 8px; color: #555; }
+        .quote-text { font-family: 'Pretendard', serif; font-size: 14px; line-height: 1.6; color: #333; word-break: keep-all; }
+
+        iframe { width: 100%; height: 400px; border: none; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+
+        .persona-card { background: white; border: 2px solid #ccc; padding: 15px; border-radius: 10px; margin-bottom: 10px; cursor: pointer; transition: 0.2s; }
+        .persona-card:hover { transform: translateY(-2px); }
+        .persona-card h4 { margin: 0; }
+        .persona-card p { margin: 5px 0 0; font-size: 12px; color: #666; }
+    </style>
+</head>
+<body>
+
+<div id="app">
+    <header><h1>📖 탁류 인터랙티브 문학기행</h1></header>
+
+    <div id="p-landing" class="page active">
+        <div class="landing-content">
+            <div class="landing-emoji">🚢</div>
+            <p class="landing-sub">채만식 「탁류」 · 전북 군산</p>
+            <h2 class="landing-title">금강을 따라 걷는<br>탁류 속 그 장소</h2>
+            <p class="landing-desc">소설 속 배경지와 대사를 따라<br>나만의 여행 코스를 만들어보세요.</p>
+            <button class="btn btn-start" onclick="go('p-book')">여행 시작하기</button>
+        </div>
+    </div>
+
+    <div id="p-book" class="page">
+        <div class="book-container">
+            <div class="cover-wrapper" onclick="go('p-test')">
+                <img src="https://image.aladin.co.kr/product/4955/13/cover500/8994353682_1.jpg" alt="탁류 표지">
+                <div class="interactive-layer">
+                    <span style="font-size:40px;">👆</span>
+                    <span style="font-weight:bold;">클릭하여<br>여행 시작하기</span>
+                </div>
+            </div>
+            <h2 style="margin:10px 0 5px;">탁류</h2>
+            <p style="color:#868e96; margin:0;">채만식</p>
+
+            <div style="margin-top:30px; text-align:left;">
+                <h4 style="margin-bottom:10px; border-left:4px solid #2c3e50; padding-left:10px;">🗺️ 탁류 기행 지도 한눈에 보기</h4>
+                <iframe src="map_all.html" class="mini-map-frame"></iframe>
+                <p style="font-size:12px; color:#666; margin-top:5px;">💡 지도 속 마커를 클릭하면 <b>네이버 사진/정보</b>를 볼 수 있습니다.</p>
+            </div>
+        </div>
+        <button class="btn btn-back" onclick="go('p-landing')">처음으로</button>
+    </div>
+
+    <div id="p-test" class="page">
+        <h3 style="text-align:center;">여행 스타일을 선택하세요</h3>
+        <div style="background:#f3e5f5; padding:15px; border-radius:10px; text-align:center; margin-bottom:20px;">
+            <p style="margin:0 0 10px; font-weight:bold;">나의 캐릭터 찾기</p>
+            <a href="https://smore.im/quiz/WeTb8D5oqa" target="_blank"
+               style="display:inline-block; background:#9b59b6; color:white; padding:10px 20px; border-radius:20px; text-decoration:none; font-size:14px; font-weight:bold;">
+               심리테스트 하러 가기 🔗
+            </a>
+        </div>
+
+        <div class="persona-card" style="border-color:#e67e22;" onclick="showCourse('emotional')">
+            <h4 style="color:#e67e22;">🥰 감성 여행자</h4>
+            <p>콩나물 고개 &amp; 월명산</p>
+        </div>
+        <div class="persona-card" style="border-color:#27ae60;" onclick="showCourse('intellectual')">
+            <h4 style="color:#27ae60;">🧐 지성 여행자</h4>
+            <p>금강 &amp; 은행 거리 &amp; 미두장</p>
+        </div>
+        <div class="persona-card" style="border-color:#2980b9;" onclick="showCourse('realist')">
+            <h4 style="color:#2980b9;">😎 리얼리스트</h4>
+            <p>개복동 &amp; 역전시장</p>
+        </div>
+        <button class="btn btn-back" onclick="go('p-book')">뒤로 가기</button>
+    </div>
+
+    <div id="p-map" class="page" style="padding:0;">
+        <div style="position:relative;">
+            <iframe id="map-frame" src=""></iframe>
+        </div>
+
+        <div style="padding:20px; background:white;">
+            <h3 style="margin-top:0;">📖 소설 속 그 장소</h3>
+            <p style="font-size:13px; color:#666; margin-bottom:15px;">👇 지도 마커를 클릭하면 <b>실제 사진(네이버 지도)</b>을 볼 수 있습니다.</p>
+            <div id="quote-list"></div>
+            <button class="btn btn-back" onclick="go('p-test')">코스 다시 선택</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    const locations = [{'id': 1, 'name': '1. 금강 & 군산항', 'search_query': '진포해양테마공원', 'lat': 35.9916, 'lon': 126.7123, 'icon': 'ship', 'quote': '‘인간 기념물’ 금강(錦江)…….<br>이 강은 지도를 펴놓고 앉아 가만히 들여다보느라면, 물줄기가 중동께서 남북으로 납작하니 째져 가지고는(한강이나 영산강도 그렇기는 하지만) 그것이 아주 재미있게 벌어져 있음을 알 수 있다. 한번 비행기라도 타고 강줄기를 따라가면서 내려다보면 또한 그럼직할 것이다.<br><br>이것이 군산이라는 항구로, 이야기는 예서부터 실마리가 풀린다. 그러나 항구라서 하룻밤 맺은 정을 떼치고 간다는 마도로스의 정담이나, 정든 사람을 태우고 멀리 떠나는 배 꽁무니에 물결만 남은 바다를 바라보면서 갈매기로 더불어 운다는 여인네의 그런 슬퍼도 달코롬한 이야기는 못 된다.'}, {'id': 2, 'name': '2. 구 조선은행', 'search_query': '군산 근대건축관', 'lat': 35.9907, 'lon': 126.7118, 'icon': 'university', 'quote': '형보는 잠깐 망설이다가 곱사등을 내두르고 아기작아기작 전화통 앞으로 가더니 옆엣사람들의 눈치를 슬슬 살펴 가면서 xx은행 군산 지점의 전화를 부른다. 태수한테 기별을 해 주려는 것이다.<br>그러나 만일 한낱 행원으로 미두를 한다는 소문이 퍼지게 되고 보면, 더구나 모범 행원이라는 고태수로, 그런 눈치를 은행에서 알게 되는 날이면 일이 재미가 적고 한 터라, 이러한 전화는 걸고 받고 하기에 서로 조심을 한다.'}, {'id': 3, 'name': '3. 구 일본18은행', 'search_query': '군산 근대미술관', 'lat': 35.9907, 'lon': 126.7125, 'icon': 'image', 'quote': '형보는 잠깐 망설이다가 곱사등을 내두르고 아기작아기작 전화통 앞으로 가더니 옆엣사람들의 눈치를 슬슬 살펴 가면서 xx은행 군산 지점의 전화를 부른다. 태수한테 기별을 해 주려는 것이다.<br>그러나 만일 한낱 행원으로 미두를 한다는 소문이 퍼지게 되고 보면, 더구나 모범 행원이라는 고태수로, 그런 눈치를 은행에서 알게 되는 날이면 일이 재미가 적고 한 터라, 이러한 전화는 걸고 받고 하기에 서로 조심을 한다.'}, {'id': 4, 'name': '4. 미두장 터', 'search_query': '군산 근대역사박물관', 'lat': 35.991, 'lon': 126.7112, 'icon': 'money', 'quote': "정 주사는 시방 미두장(미곡취인소, 기미시장) 앞 큰길 한복판에서, 다 같은 '하바꾼(절치기꾼)'이뢰, 나이 배젊은 애송이한테 멱살을 당시랗게 따잡혀 가지고는 죽을 봉욕을 당하는 참이었다."}, {'id': 5, 'name': '5. 개복동 예술의 거리', 'custom_url': 'https://map.naver.com/p/search/%EA%B5%B0%EC%82%B0%EC%8B%9C%EB%AF%BC%EC%98%88%EC%88%A0%EC%B4%8C/place/37016956?isCorrectAnswer=true&c=15.00,0,0,0,dh&placePath=/home?from=map&fromPanelNum=1&additionalHeight=76&timestamp=202601200106&locale=ko&svcName=map_pcv5&searchText=%EA%B5%B0%EC%82%B0%EC%8B%9C%EB%AF%BC%EC%98%88%EC%88%A0%EC%B4%8C', 'lat': 35.9868, 'lon': 126.7105, 'icon': 'music', 'quote': '개복동 복판으로 들어서서 콩나물고개까지 거의 당도한 정 주사는 길 옆 왼편으로 있는 탑삭부리 한 참봉네 싸전가게를 넘싯 들여다본다. 실상은 눈치를 보자는 생각뿐이요, 정작 쌀 외상을 더 달라고 하리라는 다부진 배짱은 못 먹었기 때문에 사리기부터 하던 것이다.'}, {'id': 6, 'name': '6. 제중당 (역전시장)', 'search_query': '군산 역전종합시장', 'lat': 35.9835, 'lon': 126.716, 'icon': 'shopping-cart', 'quote': '정거장에서 들어오자면 영정(榮町)으로 갈려드는 세거리 바른편 귀퉁이에 있는 제중당(濟衆堂) 이라는 양약국이 있다.<br>차려 놓은 품새야 대처면 아무 데고 흔히 있는 평범한 양약국이요, 규모도 그다지 크지 못하다.'}, {'id': 7, 'name': '7. 콩나물 고개', 'search_query': '군산 창성동', 'lat': 35.985, 'lon': 126.7065, 'icon': 'arrow-up', 'quote': '그뿐 아니라 정리된 시구(市區)라든지, 근대식 건물로든지, 사회 시설이나 위생 시설로든지, 제법 문화 도시의 모습을 차리고 있는 본정통이나, 전주통이나, 공원 밑 일대나 또 넌지시 월명산(月明山) 아래로 자리를 잡고 있는 주택지대나 이런 데다가 빗대면 개복동이니 둔뱀이니 하는 곳은 한 세기나 뒤떨어져 보인다. 한 세기라니, 이제 한 세기가 지난 뒤라도 이 사람들이 제법 그만큼이나 문화다운 살림을 하게 되리라 싶들 않다.'}, {'id': 8, 'name': '8. 월명산 (수시탑)', 'search_query': '군산 수시탑', 'lat': 35.9855, 'lon': 126.7015, 'icon': 'tree', 'quote': '그뿐 아니라 정리된 시구(市區)라든지, 근대식 건물로든지, 사회 시설이나 위생 시설로든지, 제법 문화 도시의 모습을 차리고 있는 본정통이나, 전주통이나, 공원 밑 일대나 또 넌지시 월명산(月明山) 아래로 자리를 잡고 있는 주택지대나 이런 데다가 빗대면 개복동이니 둔뱀이니 하는 곳은 한 세기나 뒤떨어져 보인다. 한 세기라니, 이제 한 세기가 지난 뒤라도 이 사람들이 제법 그만큼이나 문화다운 살림을 하게 되리라 싶들 않다.'}];
+
+    const courseIds = {
+        "emotional": [7, 8],
+        "intellectual": [1, 2, 3, 4],
+        "realist": [5, 6]
+    };
+
+    function go(id) {
+        document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+        document.getElementById(id).classList.add('active');
+        window.scrollTo(0,0);
+    }
+
+    function showCourse(type) {
+        document.getElementById('map-frame').src = 'map_' + type + '.html';
+
+        const list = document.getElementById('quote-list');
+        list.innerHTML = '';
+
+        const targetIds = courseIds[type];
+        targetIds.forEach(id => {
+            const loc = locations.find(l => l.id === id);
+            if(loc) {
+                const div = document.createElement('div');
+                div.className = 'quote-card';
+                div.innerHTML = `
+                    <div class="quote-title">${loc.name}</div>
+                    <div class="quote-text">${loc.quote}</div>
+                `;
+                list.appendChild(div);
+            }
+        });
+        go('p-map');
+    }
+</script>
+</body>
+</html>
